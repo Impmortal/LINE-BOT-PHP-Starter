@@ -18,7 +18,7 @@ def callback():
     #print(json_line)
     print("ผู้ใช้：",user)
     sendText(user,'งง') # ส่งข้อความ งง
-    return '',200
+    return '', 200
  
 def sendText(user, text):
     LINE_API = 'https://api.line.me/v2/bot/message/reply'
@@ -26,20 +26,20 @@ def sendText(user, text):
  
     headers = {
         'Content-Type': 'application/json; charset=UTF-8',
-        'Authorization':Authorization
+        'Authorization': Authorization
     }
  
     data = json.dumps({
         "replyToken":user,
         "messages":[{
             "type":"text",
-            "text":text
+            "text": text
         }]
     })
  
     #print("ข้อมูล：",data)
     r = requests.post(LINE_API, headers=headers, data=data) # ส่งข้อมูล
-    #print(r.text)
+    print(r.text)
  
 if __name__ == '__main__':
      app.run(debug=True)
